@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<!-- disable caching? -->
+	<meta http-equiv="cache-control" content="max-age=0" />
+	<meta http-equiv="cache-control" content="no-cache" />
+	<meta http-equiv="expires" content="0" />
+	<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+	<meta http-equiv="pragma" content="no-cache" />
+	
+	<!-- Bootstrap -->
+	<link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	
+	<title>Graph Editor</title>
+	<script src="scripts/Colors.js"></script>
+	<script src="scripts/BaseLook.js"></script>
+	<script src="scripts/ViewManager.js"></script>
+	<script src="scripts/d3.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	
+</head>
+
+<!--<body scroll="no"> might prevent scrolling in other browsers?--> 
+<body>
+	
+	<!-- jQuery -->
+	<script src="node_modules/jquery/dist/jquery.js"></script>
+	<!-- Bootstrap -->
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<!-- round slider -->
+	<link href="https://cdn.jsdelivr.net/jquery.roundslider/1.3/roundslider.min.css" rel="stylesheet" />
+	<script src="roundSlider-1.3/dist/roundslider.min.js"></script>
+
+	<div class="container full-size"> <!-- container for whole page, full-size prevents scrolling-->
+		
+		<header class="navbar-default navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">LAMA</a>
+				</div>
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Graph<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">New</a></li>
+								<li><a href="#">Save</a></li>
+								<li><a href="#">Save as</a></li>
+								<li><a href="#">Load</a></li>
+								<li role="separator" class="divider"></li>
+								<!--<li class="dropdown-header">Nav header</li>-->
+								<li><a onclick="model.undo()">Undo</a></li>
+								<li><a onclick="model.redo()">Redo</a></li>
+							</ul>
+						</li>
+						
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mode<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a onclick="router.navigate('baseMode', {trigger:true})">Base Mode</a></li>
+								<li><a onclick="router.navigate('layoutModification', {trigger:true})">Layout Modification</a></li>
+							</ul>
+						</li>
+						
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Trajectory<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Delete</a></li>
+								<li><a href="#">Transform</a>
+									<ul class="sub-menu">
+										<li><a href="#">to line</a></li>
+										<li><a href="#">to circle</a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Algorithms<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Force directed layout</a></li>
+							</ul>
+						</li>
+						
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li>
+							<button type="button" class="btn btn-default button">
+								<span class="glyphicon glyphicon-move" aria-hidden="true"></span>
+							</button>
+						</li>
+						<li id="slider"></li>
+						<li>
+							<input class="slider" type="range" min="0" max="100" value="50" />
+						</li>
+					</ul>
+				</div>
+			</div>
+		</header>
+		
+		<div id="graph"></div>
+		
+	</div> <!-- end container full size -->
+	
+	<script src="scripts/start.js"></script>
+	<script src="scripts/roundSlider.js"></script>
+
+	<!--<script src="./build/assertion.js"></script>-->
+	
+	<!--<script src="./ext/jquery-min.js"></script>-->
+	<!--<script src="./ext/underscore-min.js"> </script>-->
+	<!--<script src="./ext/backbone-min.js"></script>-->
+	<!--<script data-main="build/app" src="build/require.js"></script>-->
+	<!--<script src="./build/editor.js"></script>-->
+	<!--<script src="./app.js"></script>-->
+	
+</body>
+</html>

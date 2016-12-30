@@ -1,0 +1,22 @@
+#graph, svg{
+	height: 100%;
+	width: 100%;
+}
+
+.full-size{
+	height: 100%;
+	width: 100%;
+	clip: auto;
+	position: absolute;
+	overflow: hidden;
+}
+
+.button {
+	margin: 8px 20px;
+	text-align: center;
+}
+
+.slider {
+	align: right;
+	margin: 15px 20px;
+}
